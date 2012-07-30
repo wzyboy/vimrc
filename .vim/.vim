@@ -1,1 +1,0 @@
-/home/wzyboy/git/myVim/.vim
