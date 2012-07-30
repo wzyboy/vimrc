@@ -1,0 +1,5 @@
+#!/bin/bash -x
+
+ln -fs `pwd`/.vimrc ~/.vimrc
+ln -fs `pwd`/.vim ~/.vim
+
