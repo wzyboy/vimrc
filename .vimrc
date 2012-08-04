@@ -33,4 +33,3 @@ autocmd FileType html imap <F6> </code>
 autocmd FileType html imap <F7> <li>
 autocmd FileType html imap <F8> </li>
 autocmd FileType sh imap <F3> #!/bin/bash - <CR><CR>
-
