@@ -32,4 +32,5 @@ autocmd FileType html imap <F5> &gt;
 autocmd FileType html imap <F6> </code>
 autocmd FileType html imap <F7> <li>
 autocmd FileType html imap <F8> </li>
-autocmd FileType sh imap <F3> #!/bin/bash - <CR><CR>
+autocmd FileType sh imap <F3> #!/bin/bash -<CR><CR>
+autocmd FileType python imap <F3> #!/usr/bin/env python<CR><CR>
