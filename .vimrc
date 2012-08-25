@@ -4,13 +4,14 @@ set list listchars=tab:»·,trail:·
 set formatoptions+=mM
 set wildmode=longest,list
 set showcmd modeline
-set t_Co=256
+set t_Co=256 noswapfile
 colorscheme evening
 nmap <F12> ggg?G
 map gs :%s/
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
+autocmd BufNewFile,BufRead compose_message.txt set filetype=mail
 autocmd BufNewFile,BufRead /var/log/* set filetype=messages
 autocmd FileType text set textwidth=78
 autocmd FileType mail set textwidth=72
