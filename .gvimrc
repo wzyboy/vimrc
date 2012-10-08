@@ -1,3 +1,3 @@
 behave mswin
-set guioptions-=T
+set guioptions=aegimLt
 colorscheme default
