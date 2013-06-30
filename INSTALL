@@ -1,7 +1,0 @@
-#!/bin/bash -x
-
-ln -fs `pwd`/.vimrc ~/.vimrc
-rm -rf ~/.vim
-ln -s `pwd`/.vim ~
-ln -fs `pwd`/.gvimrc ~/.gvimrc
-
