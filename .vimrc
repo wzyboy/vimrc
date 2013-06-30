@@ -9,7 +9,6 @@ set undofile
 set undodir=~/.vim/undodir
 set t_Co=256
 set background=dark
-colorscheme default
 syntax on
 
 cnoreabbrev q1 q!
