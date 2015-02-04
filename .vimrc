@@ -16,7 +16,8 @@ cnoreabbrev q1 q!
 vmap D dO[...]<Esc>
 nmap <F8> :set nobomb fenc=utf-8 ff=unix<CR>
 nmap <F12> ggg?G
-nmap <Tab> :set rnu!<CR>
+"nmap <Tab> :set rnu!<CR>
+nmap <Tab> :NERDTreeToggle<CR>
 map gs :%s/
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
