@@ -30,7 +30,6 @@ autocmd BufNewFile,BufRead /tmp/bash-fc-* set filetype=sh
 autocmd BufNewFile,BufRead /var/log/* set filetype=messages
 autocmd FileType text set textwidth=78
 autocmd FileType mail set textwidth=72
-autocmd FileType mail nmap <F2> :w !gpg --clearsign<CR>
 autocmd FileType html imap <F3> <!doctype html><CR>
 autocmd FileType sh imap <F3> #!/bin/bash -<CR><CR>
 autocmd FileType python imap <F3> #!/usr/bin/env python<CR><CR>
@@ -64,3 +63,10 @@ autocmd InsertLeave * call Fcitx2en()
 " vimim
 let g:vimim_punctuation=3
 let g:vimim_cloud=-1
+
+" GnuPG
+set noshelltemp
+nmap ps :%!gpg --clearsign<CR>
+nmap pe :%!gpg -er 
+nmap pb :%!gpg -ser 
+nmap pd :%!gpg -d<CR>
