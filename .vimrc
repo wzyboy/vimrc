@@ -4,10 +4,11 @@ set list listchars=tab:»·,trail:·
 set formatoptions+=mM
 set wildmode=longest,list
 set showcmd modeline
+set laststatus=2
 set noswapfile
 set undofile
 set undodir=~/.vim/undodir
-set t_Co=256
+"set t_Co=256
 set background=dark
 syntax on
 
