@@ -33,7 +33,7 @@ autocmd FileType mail set textwidth=72
 autocmd FileType gitcommit set textwidth=72
 autocmd FileType html imap <F3> <!doctype html><CR>
 autocmd FileType sh imap <F3> #!/bin/bash -<CR><CR>
-autocmd FileType python imap <F3> #!/usr/bin/env python<CR><CR>
+autocmd FileType python imap <F3> #!/usr/bin/env python<CR># coding: utf-8<CR><CR>
 autocmd FileType python set softtabstop=4 expandtab shiftwidth=4
 autocmd FileType conf map <F3> 0i#<Esc>j
 autocmd FileType conf map <F4> 0x<Esc>j
