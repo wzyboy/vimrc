@@ -75,3 +75,7 @@ nmap pd :%!gpg -d<CR>
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "light"
+
+" Jedi
+let g:jedi#auto_vim_configuration = 0
+set completeopt=longest,menuone
