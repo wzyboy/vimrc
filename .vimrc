@@ -71,3 +71,7 @@ nmap ps :%!gpg --clearsign<CR>
 nmap pe :%!gpg -er 
 nmap pb :%!gpg -ser 
 nmap pd :%!gpg -d<CR>
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "light"
