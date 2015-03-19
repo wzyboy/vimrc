@@ -30,6 +30,7 @@ autocmd BufNewFile,BufRead /tmp/bash-fc-* set filetype=sh
 autocmd BufNewFile,BufRead /var/log/* set filetype=messages
 autocmd FileType text set textwidth=78
 autocmd FileType mail set textwidth=72
+autocmd FileType gitcommit set textwidth=72
 autocmd FileType html imap <F3> <!doctype html><CR>
 autocmd FileType sh imap <F3> #!/bin/bash -<CR><CR>
 autocmd FileType python imap <F3> #!/usr/bin/env python<CR><CR>
