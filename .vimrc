@@ -79,3 +79,17 @@ let g:airline_theme = "light"
 " Jedi
 let g:jedi#auto_vim_configuration = 0
 set completeopt=longest,menuone
+
+" Syntastic
+let g:syntastic_python_checkers = ['flake8']
+" Error codes reference: http://flake8.readthedocs.org/en/latest/warnings.html
+" E265: block comment should start with ‘# ‘
+" E501: line too long (<n> characters)
+" W404: 'from <module> import ``*``' used; unable to detect undefined names
+" Use `# NOQA` to ignore warnings for certain lines
+let g:syntastic_python_flake8_args='--ignore=E265,E501'
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['python', 'javascript', 'php'],
+                           \ 'passive_filetypes': ['rst', 'html'] }
+" Not setting the loclist by default is the intended behaviour. Previously we did set it, but syntastic isnt the only plugin using loclists. See #324
+let g:syntastic_always_populate_loc_list=1
