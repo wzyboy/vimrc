@@ -1,27 +1,47 @@
+" Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'bigeagle/molokai'
+Plug 'junegunn/seoul256.vim'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'bling/vim-airline'
+Plug 'junegunn/fzf.vim'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'ervandew/supertab',    { 'for': 'python' }
+Plug 'scrooloose/syntastic', { 'for': 'python' }
+Plug 'mattn/emmet-vim',      { 'for': ['html', 'htmldjango', 'xml'] }
+Plug 'scrooloose/nerdtree',  { 'on': 'NERDTreeToggle' }
+call plug#end()
+
+" Basics
+set modeline
+set noswapfile
 set shiftwidth=2 shiftround
 set autoindent smartindent
 set list listchars=tab:»·,trail:·
 set formatoptions+=mM
 set wildmode=longest,list
-set showcmd modeline
-set laststatus=2
-set noswapfile
-set undofile
-set undodir=~/.vim/undodir
+set showcmd laststatus=2
+set undofile undodir=~/.vim/undodir
 set t_Co=256
-set background=dark
 syntax on
+colorscheme molokai
 
+" Maps
 cnoreabbrev q1 q!
 vmap D dO[...]<Esc>
 nmap <F8> :set nobomb fenc=utf-8 ff=unix<CR>
 nmap <F12> ggg?G
-"nmap <Tab> :set rnu!<CR>
 nmap <Tab> :NERDTreeToggle<CR>
+nmap T :tabnew<CR>
+nmap gx :tabclose<CR>
+nmap F :Ag<CR>
+nmap <C-f> :Files<CR>
 map gs :%s/
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
+" Filetypes
 autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
 autocmd BufNewFile,BufRead *.mail set filetype=mail
 autocmd BufNewFile,BufRead /tmp/mail-* set filetype=mail
@@ -33,52 +53,31 @@ autocmd FileType mail set textwidth=72
 autocmd FileType gitcommit set textwidth=72
 autocmd FileType html imap <F3> <!doctype html><CR>
 autocmd FileType sh imap <F3> #!/bin/bash -<CR><CR>
-autocmd FileType python imap <F3> #!/usr/bin/env python<CR># coding: utf-8<CR><CR>
+autocmd FileType python imap <F3> #!/usr/bin/env python<CR><CR>
 autocmd FileType python set softtabstop=4 expandtab shiftwidth=4
 autocmd FileType conf map <F3> 0i#<Esc>j
 autocmd FileType conf map <F4> 0x<Esc>j
 autocmd FileType apache map <F3> 0i#<Esc>j
 autocmd FileType apache map <F4> 0x<Esc>j
 
-let g:input_toggle = 1
-function! Fcitx2en()
-   let s:input_status = system("fcitx-remote")
-   if s:input_status == 2
-      let g:input_toggle = 1
-      let l:a = system("fcitx-remote -c")
-   endif
-endfunction
-
-function! Fcitx2zh()
-   let s:input_status = system("fcitx-remote")
-   if s:input_status != 2 && g:input_toggle == 1
-      let l:a = system("fcitx-remote -o")
-      let g:input_toggle = 0
-   endif
-endfunction
-
-set timeoutlen=150
-autocmd InsertLeave * call Fcitx2en()
-"autocmd InsertEnter * call Fcitx2zh()
-
-" vimim
-let g:vimim_punctuation=3
-let g:vimim_cloud=-1
-
 " GnuPG
 set noshelltemp
-nmap ps :%!gpg --clearsign<CR>
-nmap pe :%!gpg -er 
-nmap pb :%!gpg -ser 
-nmap pd :%!gpg -d<CR>
+nmap Ps :%!gpg --clearsign<CR>
+nmap Pe :%!gpg -er 
+nmap Pb :%!gpg -ser 
+nmap Pd :%!gpg -d<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme = "light"
+let g:airline_theme = "papercolor"
 
 " Jedi
 let g:jedi#auto_vim_configuration = 0
-set completeopt=longest,menuone
+let g:jedi#popup_select_first = 0
+set completeopt=menuone
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Syntastic
 let g:syntastic_python_checkers = ['flake8']
@@ -87,9 +86,6 @@ let g:syntastic_python_checkers = ['flake8']
 " E501: line too long (<n> characters)
 " W404: 'from <module> import ``*``' used; unable to detect undefined names
 " Use `# NOQA` to ignore warnings for certain lines
-let g:syntastic_python_flake8_args='--ignore=E265,E501'
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['python', 'javascript', 'php'],
-                           \ 'passive_filetypes': ['rst', 'html'] }
-" Not setting the loclist by default is the intended behaviour. Previously we did set it, but syntastic isnt the only plugin using loclists. See #324
-let g:syntastic_always_populate_loc_list=1
+let g:syntastic_python_flake8_args = '--ignore=E265,E501'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_wq = 0
