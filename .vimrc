@@ -9,7 +9,7 @@ Plug 'bling/vim-airline'
 Plug 'junegunn/fzf.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ervandew/supertab',    { 'for': 'python' }
-Plug 'scrooloose/syntastic', { 'for': 'python' }
+Plug 'scrooloose/syntastic', { 'for': ['python', 'lua'] }
 Plug 'mattn/emmet-vim',      { 'for': ['html', 'htmldjango', 'xml'] }
 Plug 'scrooloose/nerdtree',  { 'on': 'NERDTreeToggle' }
 call plug#end()
@@ -82,12 +82,11 @@ set completeopt=menuone
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Syntastic
-let g:syntastic_python_checkers = ['flake8']
-" Error codes reference: http://flake8.readthedocs.org/en/latest/warnings.html
-" E265: block comment should start with ‘# ‘
-" E501: line too long (<n> characters)
-" W404: 'from <module> import ``*``' used; unable to detect undefined names
-" Use `# NOQA` to ignore warnings for certain lines
-let g:syntastic_python_flake8_args = '--ignore=E265,E501'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--ignore=E265,E501'
+
+let g:syntastic_lua_checkers = ['luac', 'luacheck']
+let g:syntastic_lua_luacheck_args = '--no-unused-args'
