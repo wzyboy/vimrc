@@ -22,6 +22,7 @@ set list listchars=tab:»·,trail:·
 set formatoptions+=mM
 set wildmode=longest,list
 set showcmd laststatus=2
+set splitright splitbelow
 set undofile undodir=~/.vim/undodir
 set t_Co=256
 syntax on
