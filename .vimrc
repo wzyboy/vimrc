@@ -4,6 +4,7 @@ Plug 'bigeagle/molokai'
 Plug 'junegunn/seoul256.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'jnurmine/Zenburn'
 Plug 'bling/vim-airline'
 Plug 'junegunn/fzf.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
