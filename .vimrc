@@ -12,6 +12,9 @@ Plug 'ervandew/supertab',    { 'for': 'python' }
 Plug 'scrooloose/syntastic', { 'for': ['python', 'lua'] }
 Plug 'mattn/emmet-vim',      { 'for': ['html', 'htmldjango', 'xml'] }
 Plug 'scrooloose/nerdtree',  { 'on': 'NERDTreeToggle' }
+Plug 'nathangrigg/vim-beancount'
+Plug 'chase/vim-ansible-yaml'
+Plug 'jamessan/vim-gnupg'
 call plug#end()
 
 " Basics
@@ -90,3 +93,10 @@ let g:syntastic_python_flake8_args = '--ignore=E265,E501'
 
 let g:syntastic_lua_checkers = ['luac', 'luacheck']
 let g:syntastic_lua_luacheck_args = '--no-unused-args'
+
+" Beancount
+let b:beancount_root = expand('~/Documents/Ledger/wzyboy.beancount')
+autocmd FileType beancount inoremap . .<C-O>:AlignCommodity<CR>
+autocmd FileType beancount inoremap <Tab> <c-x><c-o>
+autocmd FileType beancount inoremap > <C-R>=strftime('%Y-%m-%d')<CR> * 
+autocmd FileType beancount set nofoldenable
