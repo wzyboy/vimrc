@@ -3,9 +3,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'bigeagle/molokai'
 Plug 'junegunn/seoul256.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'jnurmine/Zenburn'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ervandew/supertab',    { 'for': 'python' }
@@ -96,7 +96,9 @@ let g:syntastic_lua_luacheck_args = '--no-unused-args'
 
 " Beancount
 let b:beancount_root = expand('~/Documents/Ledger/wzyboy.beancount')
+autocmd FileType beancount set nofoldenable
 autocmd FileType beancount inoremap . .<C-O>:AlignCommodity<CR>
 autocmd FileType beancount inoremap <Tab> <c-x><c-o>
 autocmd FileType beancount inoremap > <C-R>=strftime('%Y-%m-%d')<CR> * 
-autocmd FileType beancount set nofoldenable
+autocmd FileType beancount nnoremap <C-p> :execute ":!bean-doctor context % " . line('.')<CR>
+autocmd FileType beancount vnoremap L :!bean-format /dev/stdin<CR>
