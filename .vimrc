@@ -15,6 +15,9 @@ Plug 'scrooloose/nerdtree',  { 'on': 'NERDTreeToggle' }
 Plug 'nathangrigg/vim-beancount'
 Plug 'chase/vim-ansible-yaml'
 Plug 'jamessan/vim-gnupg'
+Plug 'chr4/nginx.vim',       { 'for': 'nginx' }
+Plug 'lepture/vim-jinja'
+Plug 'powerman/vim-plugin-AnsiEsc'
 call plug#end()
 
 " Basics
