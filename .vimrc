@@ -1,4 +1,5 @@
 " Plugins
+set rtp+=/usr/share/vim/vimfiles
 call plug#begin('~/.vim/plugged')
 Plug 'bigeagle/molokai'
 Plug 'junegunn/seoul256.vim'
@@ -7,11 +8,12 @@ Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf.vim'
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'ervandew/supertab',    { 'for': 'python' }
+"Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi',  { 'for': 'python' }
 Plug 'scrooloose/syntastic', { 'for': ['python', 'lua'] }
 Plug 'mattn/emmet-vim',      { 'for': ['html', 'htmldjango', 'xml'] }
-Plug 'scrooloose/nerdtree',  { 'on': 'NERDTreeToggle' }
+Plug 'ervandew/supertab'
 Plug 'nathangrigg/vim-beancount'
 Plug 'chase/vim-ansible-yaml'
 Plug 'jamessan/vim-gnupg'
@@ -31,21 +33,26 @@ set wildmode=longest,list
 set showcmd laststatus=2
 set splitright splitbelow
 set undofile undodir=~/.vim/undodir
+set nohls noincsearch
 set t_Co=256
 syntax on
 colorscheme molokai
+
+" NeoVim
+let g:python_host_prog = '/home/wzyboy/.local/share/nvim/python2/bin/python'
+let g:python3_host_prog = '/home/wzyboy/.local/share/nvim/python/bin/python'
 
 " Maps
 cnoreabbrev q1 q!
 vmap D dO[...]<Esc>
 nmap <F8> :set nobomb fenc=utf-8 ff=unix<CR>
 nmap <F12> ggg?G
-nmap <Tab> :NERDTreeToggle<CR>
 nmap T :tabnew<CR>
 nmap gx :tabclose<CR>
 nmap F :Ag<CR>
 nmap <C-f> :Files<CR>
-map gs :%s/
+nmap gs :%s/
+nmap gc :setlocal spell! spelllang=en_us<CR>
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
@@ -58,15 +65,13 @@ autocmd BufNewFile,BufRead /tmp/bash-fc-* set filetype=sh
 autocmd BufNewFile,BufRead /var/log/* set filetype=messages
 autocmd FileType text set textwidth=78
 autocmd FileType mail set textwidth=72
+autocmd FileType mail setlocal spell spelllang=en_us
+autocmd FileType mail setlocal dictionary+=/usr/share/dict/words
 autocmd FileType gitcommit set textwidth=72
 autocmd FileType html imap <F3> <!doctype html><CR>
 autocmd FileType sh imap <F3> #!/bin/bash -<CR><CR>
 autocmd FileType python imap <F3> #!/usr/bin/env python<CR><CR>
 autocmd FileType python set softtabstop=4 expandtab shiftwidth=4
-autocmd FileType conf map <F3> 0i#<Esc>j
-autocmd FileType conf map <F4> 0x<Esc>j
-autocmd FileType apache map <F3> 0i#<Esc>j
-autocmd FileType apache map <F4> 0x<Esc>j
 
 " GnuPG
 set noshelltemp
@@ -79,10 +84,13 @@ nmap Pd :%!gpg -d<CR>
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "papercolor"
 
-" Jedi
+" Completion
+set completeopt=menuone
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_select_first = 0
-set completeopt=menuone
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#sources#jedi#server_timeout = 5
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -100,8 +108,7 @@ let g:syntastic_lua_luacheck_args = '--no-unused-args'
 " Beancount
 let b:beancount_root = expand('~/Documents/Ledger/wzyboy.beancount')
 autocmd FileType beancount set nofoldenable
-autocmd FileType beancount inoremap . .<C-O>:AlignCommodity<CR>
-autocmd FileType beancount inoremap <Tab> <c-x><c-o>
+autocmd FileType beancount inoremap . .<C-\><C-O>:AlignCommodity<CR>
 autocmd FileType beancount inoremap > <C-R>=strftime('%Y-%m-%d')<CR> * 
 autocmd FileType beancount nnoremap <C-p> :execute ":!bean-doctor context % " . line('.')<CR>
 autocmd FileType beancount vnoremap L :!bean-format /dev/stdin<CR>
