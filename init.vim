@@ -39,7 +39,7 @@ set rnu
 syntax on
 colorscheme molokai
 
-" NeoVim
+" Neovim
 "let g:python_host_prog = '/home/wzyboy/.local/share/nvim/python2/bin/python'
 let g:python3_host_prog = '/home/wzyboy/.local/share/nvim/python/bin/python'
 
@@ -95,7 +95,6 @@ let g:deoplete#sources#jedi#server_timeout = 5
 autocmd FileType javascript call deoplete#custom#buffer_option('auto_complete', v:false)
 call deoplete#initialize()
 
-
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
@@ -106,7 +105,6 @@ let g:ale_linters = {
 \  'python': ['flake8', 'pylsp'],
 \  'cs': ['OmniSharp'],
 \}
-
 nnoremap <buffer> <silent> K :ALEHover<CR>
 nnoremap <buffer> <silent> gd :ALEGoToDefinition -tab<CR>
 

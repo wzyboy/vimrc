@@ -1,4 +1,4 @@
 vimrc
 =====
 
-Neomim configuration for my personal use.
+Neovim configuration for my personal use.
