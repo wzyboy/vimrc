@@ -3,10 +3,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'bigeagle/molokai'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/fzf',         { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim',    { 'for': 'javascript', 'branch': 'release' }
-Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'mattn/emmet-vim'
 Plug 'ervandew/supertab'
 Plug 'nathangrigg/vim-beancount'
@@ -18,7 +18,6 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'dense-analysis/ale'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'martinda/Jenkinsfile-vim-syntax'
-"Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 Plug 'hashivim/vim-terraform',  { 'for': 'terraform' }
 Plug 'chrisbra/csv.vim',     { 'for': 'csv' }
 call plug#end()
@@ -104,7 +103,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:ale_lint_on_enter = 0
 let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_linters = {
-\  'python': ['flake8', 'pyls'],
+\  'python': ['flake8', 'pylsp'],
 \  'cs': ['OmniSharp'],
 \}
 
