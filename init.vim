@@ -101,7 +101,9 @@ let g:ale_fix_on_save = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_linters = {
 \  'python': ['flake8', 'pylsp'],
+\  'javascript': ['eslint', 'tsserver'],
 \  'cs': ['OmniSharp'],
+\  'terraform': ['terraform', 'terraform_ls', 'tflint'],
 \}
 let g:ale_fixers = {
 \  'terraform': ['terraform'],
