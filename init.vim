@@ -100,10 +100,14 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " ALE
 let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_linters = {
 \  'python': ['flake8', 'pylsp'],
 \  'cs': ['OmniSharp'],
+\}
+let g:ale_fixers = {
+\  'terraform': ['terraform'],
 \}
 nnoremap <buffer> <silent> K :ALEHover<CR>
 nnoremap <buffer> <silent> gd :ALEGoToDefinition -tab<CR>
