@@ -6,7 +6,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf',         { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neoclide/coc.nvim',    { 'for': 'javascript', 'branch': 'release' }
 Plug 'mattn/emmet-vim'
 Plug 'ervandew/supertab'
 Plug 'nathangrigg/vim-beancount'
@@ -91,8 +90,6 @@ set completeopt=menuone
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_select_first = 0
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#jedi#server_timeout = 5
-autocmd FileType javascript call deoplete#custom#buffer_option('auto_complete', v:false)
 call deoplete#initialize()
 
 " Supertab
