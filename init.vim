@@ -1,24 +1,27 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
+" looks
 Plug 'bigeagle/molokai'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/fzf',         { 'do': { -> fzf#install() } }
+" utilities
+Plug 'junegunn/fzf',           { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'mattn/emmet-vim'
-Plug 'ervandew/supertab'
-Plug 'nathangrigg/vim-beancount'
-Plug 'chase/vim-ansible-yaml'
 Plug 'jamessan/vim-gnupg'
-Plug 'chr4/nginx.vim',       { 'for': 'nginx' }
-Plug 'lepture/vim-jinja'
-Plug 'powerman/vim-plugin-AnsiEsc'
+" completion
+Plug 'mattn/emmet-vim',         { 'for': 'html' }
+Plug 'ervandew/supertab'
 Plug 'dense-analysis/ale'
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'martinda/Jenkinsfile-vim-syntax'
-Plug 'hashivim/vim-terraform',  { 'for': 'terraform' }
-Plug 'chrisbra/csv.vim',     { 'for': 'csv' }
+Plug 'Shougo/deoplete.nvim',    { 'do': ':UpdateRemotePlugins' }
+Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
+" file types
+Plug 'chr4/nginx.vim',                  { 'for': 'nginx' }
+Plug 'chrisbra/csv.vim',                { 'for': 'csv' }
+Plug 'lepture/vim-jinja',               { 'for': 'jinja' }
+Plug 'chase/vim-ansible-yaml',          { 'for': 'ansible' }
+Plug 'hashivim/vim-terraform',          { 'for': 'terraform' }
+Plug 'nathangrigg/vim-beancount',       { 'for': 'beancount' }
+Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'Jenkinsfile' }
 call plug#end()
 
 " Basics
@@ -85,10 +88,8 @@ nmap Pd :%!gpg -d<CR>
 let g:airline_powerline_fonts = 0
 let g:airline_theme = "papercolor"
 
-" Completion
+" Deoplete
 set completeopt=menuone
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_select_first = 0
 let g:deoplete#enable_at_startup = 1
 call deoplete#initialize()
 
