@@ -18,8 +18,8 @@ Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
 Plug 'chr4/nginx.vim',                  { 'for': 'nginx' }
 Plug 'chrisbra/csv.vim',                { 'for': 'csv' }
 Plug 'lepture/vim-jinja',               { 'for': 'jinja' }
-Plug 'chase/vim-ansible-yaml',          { 'for': 'ansible' }
 Plug 'hashivim/vim-terraform',          { 'for': 'terraform' }
+Plug 'pearofducks/ansible-vim',         { 'for': 'yaml.ansible' }
 Plug 'nathangrigg/vim-beancount',       { 'for': 'beancount' }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'Jenkinsfile' }
 call plug#end()
