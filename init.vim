@@ -8,6 +8,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf',           { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jamessan/vim-gnupg'
+Plug 'wakatime/vim-wakatime'
 " completion
 Plug 'mattn/emmet-vim',         { 'for': 'html' }
 Plug 'ervandew/supertab'
