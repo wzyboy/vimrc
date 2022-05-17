@@ -109,6 +109,7 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \  'terraform': ['terraform'],
+\  'hcl': ['packer'],
 \}
 nnoremap <buffer> <silent> K :ALEHover<CR>
 nnoremap <buffer> <silent> gd :ALEGoToDefinition -tab<CR>
