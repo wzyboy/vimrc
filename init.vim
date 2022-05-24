@@ -10,7 +10,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'jamessan/vim-gnupg'
 Plug 'wakatime/vim-wakatime'
 " completion
-Plug 'mattn/emmet-vim',         { 'for': 'html' }
+Plug 'mattn/emmet-vim',         { 'for': ['html', 'markdown'] }
 Plug 'ervandew/supertab'
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim',    { 'do': ':UpdateRemotePlugins' }
