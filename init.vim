@@ -11,10 +11,13 @@ Plug 'jamessan/vim-gnupg'
 Plug 'wakatime/vim-wakatime'
 " completion
 Plug 'mattn/emmet-vim',         { 'for': ['html', 'markdown', 'jinja.html'] }
-Plug 'ervandew/supertab'
 Plug 'dense-analysis/ale'
-Plug 'Shougo/deoplete.nvim',    { 'do': ':UpdateRemotePlugins' }
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/nvim-cmp'
 " file types
 Plug 'chr4/nginx.vim',                  { 'for': 'nginx' }
 Plug 'chrisbra/csv.vim',                { 'for': 'csv' }
@@ -24,6 +27,42 @@ Plug 'pearofducks/ansible-vim',         { 'for': 'yaml.ansible' }
 Plug 'nathangrigg/vim-beancount',       { 'for': 'beancount' }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'Jenkinsfile' }
 call plug#end()
+
+lua << EOF
+-- Setup nvim-cmp.
+local cmp = require'cmp'
+
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+end
+
+cmp.setup({
+  -- Supertab-like completion.
+  mapping = cmp.mapping.preset.insert({
+    ['<Tab>'] = function(fallback)
+      if not cmp.select_next_item() then
+        if vim.bo.buftype ~= 'prompt' and has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end
+    end,
+  }),
+  -- Groups of sources.
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+  }, {
+    { name = 'buffer' },
+    { name = 'path' },
+  })
+})
+
+-- Setup lspconfig.
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.terraformls.setup{}
+EOF
 
 " Basics
 set modeline
@@ -37,6 +76,7 @@ set showcmd laststatus=2
 set splitright splitbelow
 set undofile undodir=~/.vim/undodir
 set nohls noincsearch
+set completeopt=menuone
 set t_Co=256
 set rnu
 syntax on
@@ -88,14 +128,6 @@ nmap Pd :%!gpg -d<CR>
 " Airline
 let g:airline_powerline_fonts = 0
 let g:airline_theme = "papercolor"
-
-" Deoplete
-set completeopt=menuone
-let g:deoplete#enable_at_startup = 1
-call deoplete#initialize()
-
-" Supertab
-let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " ALE
 let g:ale_lint_on_enter = 0
