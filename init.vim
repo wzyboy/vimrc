@@ -83,6 +83,9 @@ require('lspconfig')['tflint'].setup{
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
 }
+require('lspconfig')['ansiblels'].setup{
+    on_attach = on_attach,
+}
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
