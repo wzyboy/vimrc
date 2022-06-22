@@ -12,7 +12,6 @@ Plug 'wakatime/vim-wakatime'
 " completion
 Plug 'mattn/emmet-vim',         { 'for': ['html', 'markdown', 'jinja.html'] }
 Plug 'dense-analysis/ale'
-Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/nvim-cmp'
