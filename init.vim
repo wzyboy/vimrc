@@ -30,7 +30,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'Jenkinsfile' }
 call plug#end()
 
 lua << EOF
--- Customize how disagnostics are displayed
+-- Customize how diagnostics are displayed
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
