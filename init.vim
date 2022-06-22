@@ -29,6 +29,60 @@ Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'Jenkinsfile' }
 call plug#end()
 
 lua << EOF
+-- Customize how disagnostics are displayed
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = false,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
+
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+end
+
+-- Setup lspconfig.
+require('lspconfig')['pyright'].setup{
+    on_attach = on_attach,
+}
+require('lspconfig')['terraformls'].setup{
+    on_attach = on_attach,
+}
+require('lspconfig')['tflint'].setup{
+    on_attach = on_attach,
+}
+require('lspconfig')['tsserver'].setup{
+    on_attach = on_attach,
+}
+
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
@@ -58,10 +112,6 @@ cmp.setup({
     { name = 'path' },
   })
 })
-
--- Setup lspconfig.
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.terraformls.setup{}
 EOF
 
 " Basics
@@ -133,18 +183,14 @@ let g:airline_theme = "papercolor"
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
+let g:ale_linters_explicit = 1
 let g:ale_linters = {
-\  'python': ['flake8', 'pyright'],
-\  'javascript': ['eslint', 'tsserver'],
-\  'cs': ['OmniSharp'],
-\  'terraform': ['terraform', 'terraform_ls', 'tflint'],
+\  'python': ['flake8'],
 \}
 let g:ale_fixers = {
 \  'terraform': ['terraform'],
 \  'hcl': ['packer'],
 \}
-nnoremap <buffer> <silent> K :ALEHover<CR>
-nnoremap <buffer> <silent> gd :ALEGoToDefinition -tab<CR>
 
 " Beancount
 let b:beancount_root = expand('~/Documents/Ledger/wzyboy.bean')
