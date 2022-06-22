@@ -14,10 +14,12 @@ Plug 'mattn/emmet-vim',         { 'for': ['html', 'markdown', 'jinja.html'] }
 Plug 'dense-analysis/ale'
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-nvim-lsp'
 " file types
 Plug 'chr4/nginx.vim',                  { 'for': 'nginx' }
 Plug 'chrisbra/csv.vim',                { 'for': 'csv' }
@@ -92,6 +94,12 @@ local has_words_before = function()
 end
 
 cmp.setup({
+  -- REQUIRED - you must specify a snippet engine
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
   -- Supertab-like completion.
   mapping = cmp.mapping.preset.insert({
     ['<Tab>'] = function(fallback)
