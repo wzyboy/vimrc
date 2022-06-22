@@ -33,7 +33,7 @@ lua << EOF
 -- Customize how disagnostics are displayed
 vim.diagnostic.config({
   virtual_text = true,
-  signs = false,
+  signs = true,
   underline = true,
   update_in_insert = false,
   severity_sort = false,
@@ -135,7 +135,7 @@ set undofile undodir=~/.vim/undodir
 set nohls noincsearch
 set completeopt=menuone
 set t_Co=256
-set rnu
+set rnu signcolumn=yes
 syntax on
 colorscheme molokai
 
