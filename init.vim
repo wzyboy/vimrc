@@ -186,6 +186,7 @@ let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
 \  'python': ['flake8'],
+\  'javascript': ['eslint'],
 \}
 let g:ale_fixers = {
 \  'terraform': ['terraform'],
