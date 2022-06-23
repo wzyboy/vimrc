@@ -120,7 +120,20 @@ cmp.setup({
   }, {
     { name = 'buffer' },
     { name = 'path' },
-  })
+  }),
+  -- Looks.
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.menu = ({
+        path = '[P]',
+        vsnip = '[S]',
+        buffer = '[B]',
+        nvim_lsp = '[LSP]',
+        bean_account = '[BC]',
+      })[entry.source.name]
+      return vim_item
+    end,
+  },
 })
 EOF
 
