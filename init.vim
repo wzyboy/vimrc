@@ -77,9 +77,6 @@ require('lspconfig')['pyright'].setup{
 require('lspconfig')['terraformls'].setup{
     on_attach = on_attach,
 }
-require('lspconfig')['tflint'].setup{
-    on_attach = on_attach,
-}
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
 }
@@ -208,6 +205,7 @@ let g:ale_fix_on_save = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
+\  'terraform': ['tflint'],
 \  'python': ['flake8'],
 \  'javascript': ['eslint'],
 \  'markdown': ['vale'],
