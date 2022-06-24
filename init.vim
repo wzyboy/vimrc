@@ -19,6 +19,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'crispgm/cmp-beancount'
 " file types
 Plug 'chr4/nginx.vim',                  { 'for': 'nginx' }
 Plug 'chrisbra/csv.vim',                { 'for': 'csv' }
@@ -114,7 +115,10 @@ cmp.setup({
   -- Groups of sources.
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-  }, {
+    {
+      name = 'beancount',
+      option = { account = '~/Documents/Ledger/wzyboy.bean' },
+    },
     { name = 'buffer' },
     { name = 'path' },
   }),
@@ -126,7 +130,7 @@ cmp.setup({
         vsnip = '[S]',
         buffer = '[B]',
         nvim_lsp = '[LSP]',
-        bean_account = '[BC]',
+        beancount = '[BC]',
       })[entry.source.name]
       return vim_item
     end,
@@ -216,7 +220,6 @@ let g:ale_fixers = {
 \}
 
 " Beancount
-let b:beancount_root = expand('~/Documents/Ledger/wzyboy.bean')
 autocmd FileType beancount inoremap . .<C-\><C-O>:AlignCommodity<CR>
 autocmd FileType beancount inoremap > <C-R>=strftime('%Y-%m-%d')<CR> * 
 autocmd FileType beancount nnoremap <C-p> :execute ":!bean-doctor context % " . line('.')<CR>
