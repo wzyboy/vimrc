@@ -10,7 +10,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'jamessan/vim-gnupg'
 Plug 'wakatime/vim-wakatime'
 " completion
-Plug 'mattn/emmet-vim',         { 'for': ['html', 'markdown', 'jinja.html'] }
+Plug 'mattn/emmet-vim'
 Plug 'dense-analysis/ale'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/vim-vsnip'
