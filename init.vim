@@ -15,6 +15,7 @@ Plug 'dense-analysis/ale'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/cmp-omni'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/cmp-emoji'
@@ -184,6 +185,7 @@ cmp.setup({
   -- Groups of sources.
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'omni' },
     {
       name = 'beancount',
       option = { account = '~/Documents/Ledger/wzyboy.bean' },
@@ -196,6 +198,7 @@ cmp.setup({
   formatting = {
     format = function(entry, vim_item)
       vim_item.menu = ({
+        omni = '[O]',
         path = '[P]',
         emoji = '[E]',
         vsnip = '[S]',
