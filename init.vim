@@ -199,7 +199,7 @@ cmp.setup({
     format = function(entry, vim_item)
       vim_item.menu = ({
         omni = '[O]',
-        path = '[P]',
+        path = '[F]',
         emoji = '[E]',
         vsnip = '[S]',
         buffer = '[B]',
