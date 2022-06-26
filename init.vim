@@ -220,12 +220,15 @@ EOF
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
-let g:ale_linters_explicit = 1
+" ALE is used for linters that do not have optimal LSP support. For every file
+" format that already has lspconfig set up (see above), explicitly define the
+" list of enabled linters in ALE, to avoid duplicate diagnostics.
 let g:ale_linters = {
-\  'terraform': ['tflint'],
 \  'python': ['flake8'],
+\  'terraform': ['tflint'],
 \  'javascript': ['eslint'],
-\  'markdown': ['vale'],
+\  'yaml': ['yamllint'],
+\  'ansible': [],
 \}
 let g:ale_fixers = {
 \  'terraform': ['terraform'],
