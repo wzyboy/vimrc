@@ -140,6 +140,9 @@ local on_attach = function(client, bufnr)
 end
 
 -- Setup lspconfig.
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 require('lspconfig')['pyright'].setup{
     on_attach = on_attach,
 }
@@ -151,6 +154,14 @@ require('lspconfig')['tsserver'].setup{
 }
 require('lspconfig')['ansiblels'].setup{
     on_attach = on_attach,
+}
+require('lspconfig')['html'].setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+require('lspconfig')['cssls'].setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
 }
 
 -- Setup nvim-cmp.
@@ -229,6 +240,8 @@ let g:ale_linters = {
 \  'javascript': ['eslint'],
 \  'yaml': ['yamllint'],
 \  'ansible': [],
+\  'html': [],
+\  'css': [],
 \}
 let g:ale_fixers = {
 \  'terraform': ['terraform'],
