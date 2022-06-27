@@ -174,8 +174,7 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-c>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
+      behavior = cmp.ConfirmBehavior.Insert
     }),
     ['<Tab>'] = function(fallback)
       if not cmp.select_next_item() then
