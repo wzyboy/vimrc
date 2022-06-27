@@ -204,8 +204,8 @@ cmp.setup({
       vim_item.menu = ({
         omni = '[O]',
         path = '[F]',
-        emoji = '[E]',
         vsnip = '[S]',
+        emoji = '[絵]',
         buffer = '[B]',
         nvim_lsp = '[LSP]',
         beancount = '[BC]',
