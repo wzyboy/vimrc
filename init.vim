@@ -196,6 +196,15 @@ cmp.setup({
         end
       end
     end,
+    ['<S-Tab>'] = function(fallback)
+      if not cmp.select_prev_item() then
+        if vim.bo.buftype ~= 'prompt' and has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end
+    end,
   }),
   -- Groups of sources.
   sources = cmp.config.sources({
