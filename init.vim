@@ -209,7 +209,7 @@ cmp.setup({
   -- Groups of sources.
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'omni' },
+    --{ name = 'omni' },
     {
       name = 'beancount',
       option = { account = '~/Documents/Ledger/wzyboy.bean' },
