@@ -34,6 +34,7 @@ call plug#end()
 
 " Basics
 set modeline
+set mouse=
 set noswapfile
 set shiftwidth=2 shiftround
 set autoindent smartindent expandtab
