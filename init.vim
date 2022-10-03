@@ -24,7 +24,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'crispgm/cmp-beancount'
 " file types
 Plug 'chr4/nginx.vim',                  { 'for': 'nginx' }
-Plug 'chrisbra/csv.vim',                { 'for': 'csv' }
+Plug 'chrisbra/csv.vim',
 Plug 'lepture/vim-jinja',               { 'for': 'jinja' }
 Plug 'hashivim/vim-terraform',          { 'for': 'terraform' }
 Plug 'pearofducks/ansible-vim',         { 'for': 'yaml.ansible' }
