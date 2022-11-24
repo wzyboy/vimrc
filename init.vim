@@ -23,6 +23,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'crispgm/cmp-beancount'
 " file types
+Plug 'elixir-editors/vim-elixir',       { 'for': 'elixir' }
 Plug 'chr4/nginx.vim',                  { 'for': 'nginx' }
 Plug 'chrisbra/csv.vim',
 Plug 'lepture/vim-jinja',               { 'for': 'jinja' }
