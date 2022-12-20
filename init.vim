@@ -23,12 +23,11 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'crispgm/cmp-beancount'
 " file types
-Plug 'elixir-editors/vim-elixir',       { 'for': 'elixir' }
 Plug 'chr4/nginx.vim',                  { 'for': 'nginx' }
 Plug 'chrisbra/csv.vim',
-Plug 'lepture/vim-jinja',               { 'for': 'jinja' }
 Plug 'hashivim/vim-terraform',          { 'for': 'terraform' }
 Plug 'pearofducks/ansible-vim',         { 'for': 'yaml.ansible' }
+Plug 'elixir-editors/vim-elixir',       { 'for': 'elixir' }
 Plug 'nathangrigg/vim-beancount',       { 'for': 'beancount' }
 Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'Jenkinsfile' }
 call plug#end()
