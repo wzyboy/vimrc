@@ -52,7 +52,6 @@ syntax on
 colorscheme molokai
 
 " Neovim
-"let g:python_host_prog = '/home/wzyboy/.local/share/nvim/python2/bin/python'
 let g:python3_host_prog = '/home/wzyboy/.local/share/nvim/python/bin/python'
 
 " Maps
