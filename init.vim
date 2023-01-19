@@ -151,6 +151,9 @@ require('lspconfig')['pyright'].setup{
 require('lspconfig')['terraformls'].setup{
     on_attach = on_attach,
 }
+require('lspconfig')['tflint'].setup{
+    on_attach = on_attach,
+}
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
 }
@@ -247,7 +250,7 @@ let g:ale_echo_msg_format = '[%linter%] %s'
 " list of enabled linters in ALE, to avoid duplicate diagnostics.
 let g:ale_linters = {
 \  'python': ['flake8'],
-\  'terraform': ['tflint'],
+\  'terraform': [],
 \  'javascript': ['eslint'],
 \  'yaml': ['yamllint'],
 \  'ansible': [],
