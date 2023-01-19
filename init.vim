@@ -76,7 +76,7 @@ autocmd BufNewFile,BufRead /tmp/sql* set filetype=sql
 autocmd BufNewFile,BufRead /tmp/bash-fc-* set filetype=sh
 autocmd BufNewFile,BufRead /var/log/* set filetype=messages
 autocmd BufNewFile,BufRead contents.lr set filetype=markdown
-autocmd BufNewFile,BufRead *.sentinel set filetype=terraform foldmethod=syntax
+autocmd BufNewFile,BufRead *.sentinel set filetype=terraform
 autocmd FileType text set textwidth=78
 autocmd FileType mail set textwidth=72
 autocmd FileType gitcommit set textwidth=72
@@ -85,6 +85,7 @@ autocmd FileType sh imap <F3> #!/bin/bash -<CR><CR>
 autocmd FileType python imap <F3> #!/usr/bin/env python<CR><CR>
 autocmd FileType python set softtabstop=4 expandtab shiftwidth=4
 autocmd FileType csv nmap <C-k> :WhatColumn!<CR>
+autocmd FileType terraform set foldmethod=syntax nofoldenable
 
 " GnuPG
 set noshelltemp
