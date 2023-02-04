@@ -258,7 +258,8 @@ let g:ale_linters = {
 \  'css': [],
 \}
 let g:ale_fixers = {
-\  'terraform': ['terraform'],
+\  '*': ['trim_whitespace', 'remove_trailing_lines'],
+\  'terraform': ['terraform', 'trim_whitespace', 'remove_trailing_lines'],
 \  'hcl': ['packer'],
 \}
 
