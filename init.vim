@@ -51,9 +51,6 @@ set rnu signcolumn=yes
 syntax on
 colorscheme molokai
 
-" Neovim
-let g:python3_host_prog = '/home/wzyboy/.local/share/nvim/python/bin/python'
-
 " Maps
 cnoreabbrev q1 q!
 vmap D dO[...]<Esc>
