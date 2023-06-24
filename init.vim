@@ -43,7 +43,7 @@ set nohls noincsearch
 set completeopt=menuone
 set t_Co=256
 set rnu signcolumn=yes
-syntax on
+"syntax on
 colorscheme molokai
 
 " Maps
