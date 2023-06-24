@@ -238,7 +238,7 @@ cmp.setup({
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
     "c", "lua", "vim", "vimdoc", "query",
-    "python", "hcl", "beancount",
+    "python", "terraform", "beancount",
   },
   auto_install = true,
   highlight = {
