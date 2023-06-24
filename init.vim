@@ -50,6 +50,7 @@ require("tokyonight").setup({
 })
 EOF
 colorscheme tokyonight
+set noshowmode
 let g:lightline = {'colorscheme': 'tokyonight'}
 
 " Maps
