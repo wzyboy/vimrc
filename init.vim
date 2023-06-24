@@ -1,7 +1,7 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 " looks
-Plug 'bigeagle/molokai'
+Plug 'folke/tokyonight.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " utilities
@@ -43,8 +43,14 @@ set nohls noincsearch
 set completeopt=menuone
 set t_Co=256
 set rnu signcolumn=yes
-"syntax on
-colorscheme molokai
+
+" Looks
+lua <<EOF
+require("tokyonight").setup({
+  transparent = true,
+})
+EOF
+colorscheme tokyonight
 
 " Maps
 cnoreabbrev q1 q!
