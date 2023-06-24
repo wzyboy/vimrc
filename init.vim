@@ -2,8 +2,7 @@
 call plug#begin('~/.vim/plugged')
 " looks
 Plug 'folke/tokyonight.nvim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 " utilities
 Plug 'junegunn/fzf',           { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -51,6 +50,7 @@ require("tokyonight").setup({
 })
 EOF
 colorscheme tokyonight
+let g:lightline = {'colorscheme': 'tokyonight'}
 
 " Maps
 cnoreabbrev q1 q!
@@ -91,10 +91,6 @@ nmap Ps :%!gpg --clearsign<CR>
 nmap Pe :%!gpg -er 
 nmap Pb :%!gpg -ser 
 nmap Pd :%!gpg -d<CR>
-
-" Airline
-let g:airline_powerline_fonts = 0
-let g:airline_theme = "papercolor"
 
 " Completion
 lua << EOF
