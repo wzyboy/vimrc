@@ -22,13 +22,9 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'crispgm/cmp-beancount'
 " file types
-Plug 'chr4/nginx.vim',                  { 'for': 'nginx' }
 Plug 'chrisbra/csv.vim',
-Plug 'hashivim/vim-terraform',          { 'for': 'terraform' }
-Plug 'pearofducks/ansible-vim',         { 'for': 'yaml.ansible' }
-Plug 'elixir-editors/vim-elixir',       { 'for': 'elixir' }
 Plug 'nathangrigg/vim-beancount',       { 'for': 'beancount' }
-Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'Jenkinsfile' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 call plug#end()
 
 " Basics
@@ -237,6 +233,19 @@ cmp.setup({
     end,
   },
 })
+
+-- Treesitter
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    "c", "lua", "vim", "vimdoc", "query",
+    "python", "hcl", "beancount",
+  },
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
 EOF
 
 " ALE
