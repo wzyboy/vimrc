@@ -40,7 +40,6 @@ set splitright splitbelow
 set undofile undodir=~/.vim/undodir
 set nohls noincsearch
 set completeopt=menuone
-set t_Co=256
 set rnu signcolumn=yes
 
 " Looks
@@ -49,6 +48,7 @@ lua <<EOF
 --  transparent = true,
 --})
 EOF
+set termguicolors
 colorscheme tokyonight-night
 set noshowmode
 let g:lightline = {'colorscheme': 'tokyonight'}
