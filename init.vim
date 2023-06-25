@@ -51,7 +51,7 @@ lua <<EOF
 EOF
 colorscheme tokyonight-night
 set noshowmode
-let g:lightline = {'colorscheme': 'tokyonight-night'}
+let g:lightline = {'colorscheme': 'tokyonight'}
 
 " Maps
 cnoreabbrev q1 q!
