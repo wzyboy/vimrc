@@ -45,13 +45,13 @@ set rnu signcolumn=yes
 
 " Looks
 lua <<EOF
-require("tokyonight").setup({
-  transparent = true,
-})
+--require("tokyonight").setup({
+--  transparent = true,
+--})
 EOF
-colorscheme tokyonight
+colorscheme tokyonight-night
 set noshowmode
-let g:lightline = {'colorscheme': 'tokyonight'}
+let g:lightline = {'colorscheme': 'tokyonight-night'}
 
 " Maps
 cnoreabbrev q1 q!
