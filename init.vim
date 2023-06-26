@@ -1,5 +1,5 @@
 " Plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 " looks
 Plug 'folke/tokyonight.nvim'
 Plug 'itchyny/lightline.vim'
@@ -29,7 +29,7 @@ call plug#end()
 " Basics
 set modeline
 set mouse=
-set noswapfile
+set undofile noswapfile
 set shiftwidth=2 shiftround
 set autoindent smartindent expandtab
 set list listchars=tab:»·,trail:·
@@ -37,7 +37,6 @@ set formatoptions+=mM
 set wildmode=longest,list
 set showcmd laststatus=2
 set splitright splitbelow
-set undofile undodir=~/.vim/undodir
 set nohls noincsearch
 set completeopt=menuone
 set rnu signcolumn=yes
