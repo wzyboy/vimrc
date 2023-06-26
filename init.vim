@@ -1,9 +1,8 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 " looks
-Plug 'bigeagle/molokai'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'folke/tokyonight.nvim'
+Plug 'itchyny/lightline.vim'
 " utilities
 Plug 'junegunn/fzf',           { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -22,13 +21,9 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'crispgm/cmp-beancount'
 " file types
-Plug 'chr4/nginx.vim',                  { 'for': 'nginx' }
 Plug 'chrisbra/csv.vim',
-Plug 'hashivim/vim-terraform',          { 'for': 'terraform' }
-Plug 'pearofducks/ansible-vim',         { 'for': 'yaml.ansible' }
-Plug 'elixir-editors/vim-elixir',       { 'for': 'elixir' }
 Plug 'nathangrigg/vim-beancount',       { 'for': 'beancount' }
-Plug 'martinda/Jenkinsfile-vim-syntax', { 'for': 'Jenkinsfile' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 call plug#end()
 
 " Basics
@@ -45,10 +40,18 @@ set splitright splitbelow
 set undofile undodir=~/.vim/undodir
 set nohls noincsearch
 set completeopt=menuone
-set t_Co=256
 set rnu signcolumn=yes
-syntax on
-colorscheme molokai
+
+" Looks
+lua <<EOF
+--require("tokyonight").setup({
+--  transparent = true,
+--})
+EOF
+set termguicolors
+colorscheme tokyonight-night
+set noshowmode
+let g:lightline = {'colorscheme': 'tokyonight'}
 
 " Maps
 cnoreabbrev q1 q!
@@ -81,7 +84,7 @@ autocmd FileType sh imap <F3> #!/bin/bash -<CR><CR>
 autocmd FileType python imap <F3> #!/usr/bin/env python<CR><CR>
 autocmd FileType python set softtabstop=4 expandtab shiftwidth=4
 autocmd FileType csv nmap <C-k> :WhatColumn!<CR>
-autocmd FileType terraform set foldmethod=syntax nofoldenable
+autocmd FileType terraform set foldmethod=expr foldexpr=nvim_treesitter#foldexpr() nofoldenable
 
 " GnuPG
 set noshelltemp
@@ -89,10 +92,6 @@ nmap Ps :%!gpg --clearsign<CR>
 nmap Pe :%!gpg -er 
 nmap Pb :%!gpg -ser 
 nmap Pd :%!gpg -d<CR>
-
-" Airline
-let g:airline_powerline_fonts = 0
-let g:airline_theme = "papercolor"
 
 " Completion
 lua << EOF
@@ -237,6 +236,19 @@ cmp.setup({
     end,
   },
 })
+
+-- Treesitter
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    "c", "lua", "vim", "vimdoc", "query",
+    "python", "terraform", "beancount",
+  },
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
 EOF
 
 " ALE
