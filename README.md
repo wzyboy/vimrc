@@ -1,4 +1,3 @@
-vimrc
-=====
+# MOVED
 
-Neovim configuration for my personal use.
+Configuration has been merged into [wzyboy/dotfiles](https://github.com/wzyboy/dotfiles).
